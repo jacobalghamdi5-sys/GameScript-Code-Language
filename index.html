@@ -1,9 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameScript Code Language</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --bg-space: #0b0f19;
@@ -15,6 +18,10 @@
             --brand-red: #ff0303;
             --text-main: #e2e8f0;
             --text-muted: #94a3b8;
+            
+            /* Font Mapping */
+            --font-title: 'Google Sans', 'Product Sans', system-ui, sans-serif;
+            --font-body: 'Google Sans Flex', 'Open Sans', system-ui, sans-serif;
         }
 
         * {
@@ -24,9 +31,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: var(--font-body); /* Google Sans Flex everywhere else */
             background-color: var(--bg-space);
-            /* Astro style cosmic background grid mesh */
             background-image: 
                 linear-gradient(to right, var(--bg-grid) 1px, transparent 1px),
                 linear-gradient(to bottom, var(--bg-grid) 1px, transparent 1px);
@@ -42,14 +48,8 @@
 
         /* --- STUNNING ASTRO ANIMATIONS --- */
         @keyframes cosmicGlowUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes textGradientShift {
@@ -85,6 +85,7 @@
         }
 
         h1 {
+            font-family: var(--font-title); /* Google Sans on the Title */
             font-size: 4rem;
             font-weight: 800;
             line-height: 1.1;
@@ -106,7 +107,6 @@
             line-height: 1.6;
         }
 
-        /* --- GRID CONTAINER --- */
         .grid-layout {
             max-width: 1100px;
             width: 100%;
@@ -116,9 +116,7 @@
         }
 
         @media (min-width: 768px) {
-            .grid-layout {
-                grid-template-columns: 1.2fr 0.8fr;
-            }
+            .grid-layout { grid-template-columns: 1.2fr 0.8fr; }
         }
 
         .astro-card {
@@ -142,6 +140,7 @@
         }
 
         h2 {
+            font-family: var(--font-title); /* Headers get Google Sans too */
             font-size: 1.75rem;
             color: #ffffff;
             margin-bottom: 1rem;
@@ -152,7 +151,7 @@
             background-color: #05050a;
             border: 1px solid #1e293b;
             border-radius: 8px;
-            font-family: "JetBrains Mono", Fira Code, monospace;
+            font-family: "JetBrains Mono", Fira Code, monospace; /* Keeps code readable */
             padding: 1.25rem;
             overflow-x: auto;
             white-space: pre;
@@ -162,7 +161,6 @@
             margin-top: 1.5rem;
         }
 
-        /* --- STYLISH DATA ROADMAP TABLE --- */
         table {
             width: 100%;
             border-collapse: separate;
@@ -183,76 +181,7 @@
             font-weight: 600;
         }
 
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        td:nth-child(3) {
-            color: var(--text-muted);
-            font-weight: 500;
-        }
+        tr:last-child td { border-bottom: none; }
+        td:nth-child(3) { color: var(--text-muted); font-weight: 500; }
     </style>
 </head>
-<body>
-
-    <div class="hero">
-        <div class="badge">Next-Gen Engine</div>
-        <h1>GameScript Code Language</h1>
-        <p class="tagline">Welcome to GameScript! GameScript is a code language designed to create mini-games like guess the number, shooting games, and more.</p>
-    </div>
-
-    <div class="grid-layout">
-        
-        <div class="astro-card code-card">
-            <h2>Guess the Number Example</h2>
-            <p style="color: var(--text-muted);">This makes a guess the number game using true logic, powered by custom environment engines.</p>
-            <div class="code-window">// GS Mode Running:::
-// GameScript v1.0 Start
-Game Function;
-# Game; Guess the number 
-___
-Math.random()
-text-box(limit"1-10"; style"Classic Modern")
-___
-subtitle.print-text:{Am thinking of an number, can you guess it? Pick a number from 1-10.}
-___
-&lt;if&gt;Number less...:
-Running::End Text/headingone.custom.print-text:{Your number is lower then the number you answered, please try again.};
-&lt;if&gt;Number more...:
-Running::End Text/headingone.custom.print-text:{Your number is higher then the number you answered, please try again.};
-&lt;if&gt;Number right...:
-Running::End Text/headingone.custom.print-text:{Your number is correct! Click "Play Again" to play again};
-___
-Embed::: "&lt;if&gt;Number right...:" / &lt;create&gt;Make button appear: button "Play again"&lt;/create&gt; Grab:"&lt;create&gt;&lt;/create&gt;"\ Function::: Restart Game
-After ""Function::: Restart Game""; &lt;repeat embed:::&gt; "&lt;if&gt;Number less...:"; "&lt;if&gt;Number more...:"; "&lt;if&gt;Number right...:"; &lt;/repeat embed:::&gt;
-___
-## Style
-Wallpaper:"Red #FF0303"
-___</div>
-        </div>
-
-        <div class="astro-card">
-            <h2>Modes of GSCL</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">Architectural roadmap for upcoming runtime matrix releases.</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Engine</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td style="color: #6ee7b7;">v1.0 Start</td><td>GS-1.0S</td><td>Complete</td></tr>
-                    <tr><td>v1.5 Pro</td><td>GS-1.1P</td><td>Planned</td></tr>
-                    <tr><td>v2.0 Start</td><td>GS-2.0S</td><td>Planned</td></tr>
-                    <tr><td>v2.5 Pro</td><td>GS-2.5P</td><td>Planned</td></tr>
-                    <tr><td>v3.0 Action</td><td>GS-3.0A</td><td>Planned</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-    </div>
-
-</body>
-</html>
